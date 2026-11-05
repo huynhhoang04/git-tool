@@ -8,4 +8,6 @@ venv/
 webui/node_modules/
 webui/dist/
 
+.key-router/
+
 .DS_Store

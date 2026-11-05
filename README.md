@@ -27,7 +27,7 @@ Environment (set by key-router when it runs the tool; all optional standalone):
 | --- | --- |
 | `GITHUB_TOKEN` | token used when running without key-router |
 | `KEY_ROUTER_URL` / `KEY_ROUTER_TOOL_TOKEN` | read the token from key-router and validate `/api/*` |
-| `KEY_ROUTER_TOOL_DATA` | state directory (default `~/.key-router/data/git-tool`) |
+| `KEY_ROUTER_TOOL_DATA` | state directory (default `.key-router/data/git-tool` in this checkout) |
 
 ## UI
 

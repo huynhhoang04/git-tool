@@ -12,7 +12,8 @@ def state_dir() -> Path:
     configured = os.environ.get("KEY_ROUTER_TOOL_DATA")
     if configured:
         return Path(configured)
-    return Path.home() / ".key-router" / "data" / "git-tool"
+    # Standalone: keep state inside the checkout, next to the code.
+    return Path(__file__).resolve().parent.parent / ".key-router" / "data" / "git-tool"
 
 
 def state_path() -> Path:
