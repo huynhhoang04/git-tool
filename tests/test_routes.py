@@ -54,6 +54,15 @@ def test_settings_exposes_api_version(client):
     assert client.get("/api/settings").json()["api_version"] == 4
 
 
+def test_environment_reports_required_tools(client):
+    data = client.get("/api/environment").json()
+    by_name = {tool["name"]: tool for tool in data["tools"]}
+    assert by_name["git"]["found"] is True
+    assert by_name["git"]["version"]
+    assert by_name["python"]["found"] is True
+    assert data["ok"] is True
+
+
 def test_status_without_token(client):
     data = client.get("/api/status").json()
     assert data["token"] is False

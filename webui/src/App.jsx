@@ -58,6 +58,7 @@ export default function App() {
   const [notice, setNotice] = useState('')
 
   const [settings, setSettings] = useState(null)
+  const [environment, setEnvironment] = useState(null)
   const [tokenDraft, setTokenDraft] = useState('')
 
   const fullName = repo?.owner && repo?.repo ? `${repo.owner}/${repo.repo}` : ''
@@ -224,6 +225,9 @@ export default function App() {
 
   useEffect(() => { loadStatus(); loadSettings() }, [])
   useEffect(() => {
+    api('/api/environment').then(setEnvironment).catch(() => {})
+  }, [])
+  useEffect(() => {
     (async () => {
       const data = await loadRepos()
       if (!data) return
@@ -313,6 +317,18 @@ export default function App() {
               <h1>Git workspace</h1>
               <p>Branches, pull requests and issues</p>
             </div>
+          </div>
+          <div className="header-env" aria-label="Required tools">
+            {(environment?.tools || []).map(tool => (
+              <span
+                key={tool.name}
+                className={`env-pill ${tool.found ? (tool.required ? 'ok' : '') : 'danger'}`}
+                title={`${tool.path || 'not found'}${tool.version ? ` · ${tool.version}` : ''}${tool.required ? ' · required' : ' · optional'}`}
+              >
+                <i className="env-dot" aria-hidden="true" />
+                {tool.name}{tool.version ? ` ${tool.version}` : ' missing'}
+              </span>
+            ))}
           </div>
           <div className="status">
             {status?.token ? (

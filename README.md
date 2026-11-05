@@ -11,6 +11,9 @@ Standalone FastAPI backend + a React/Vite UI served from `static/`.
 - Python 3.11+ and `git`
 - A GitHub token with `repo` scope (read for browsing; write for PRs/issues/push)
 
+The header shows what was detected on the host (`git`, `npm`, `python`); a required tool that is
+missing is highlighted in red. `npm` is optional and only needed to rebuild the UI.
+
 ## Run
 
 ```bash
@@ -43,3 +46,5 @@ Tools tab → install `owner/repo` (this repository) or register this folder loc
 ```bash
 python -m pytest tests/
 ```
+
+CI (`.github/workflows/ci.yml`) runs the suite on Linux and Windows, and builds the UI on Linux.

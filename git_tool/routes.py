@@ -10,7 +10,7 @@ import httpx
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from . import discovery, keyrouter, local_git, state as state_store
+from . import discovery, environment, keyrouter, local_git, state as state_store
 from .github import GitHub, GitHubError
 
 router = APIRouter()
@@ -137,6 +137,11 @@ def _split_repo(repo: str) -> Tuple[str, str]:
 @router.get("/health")
 def health() -> Dict[str, Any]:
     return {"ok": True, "api_version": API_VERSION}
+
+
+@router.get("/api/environment")
+def get_environment() -> Dict[str, Any]:
+    return environment.checks()
 
 
 # ---------------------------------------------------------------- discovery

@@ -82,7 +82,7 @@ a { color: inherit; }
 .topbar {
   flex: 0 0 auto;
   height: 56px;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  display: flex; align-items: center; justify-content: flex-start; gap: 16px;
   padding: 0 20px;
   border-bottom: 1px solid var(--border);
 }
@@ -98,7 +98,7 @@ a { color: inherit; }
 .brand-text { display: flex; flex-direction: column; min-width: 0; }
 .brand-text h1 { margin: 0; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
 .brand-text p { margin: 0; font-size: 11.5px; color: var(--text-muted); }
-.status { display: flex; align-items: center; gap: 10px; }
+.status { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 
 .notices { display: flex; flex-direction: column; gap: 8px; padding: 10px 20px 0; }
 
@@ -668,3 +668,20 @@ button.row:disabled { opacity: 0.6; cursor: not-allowed; }
   border: 1px solid transparent; border-radius: 9999px; padding: 2px 8px;
 }
 .pr-link:hover { color: var(--brand); border-color: var(--brand-border); background: var(--brand-bg); }
+
+/* ------------------------------------------------------------ environment */
+
+.header-env { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.env-pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 19px; padding: 0 7px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface-900);
+  color: var(--text-muted);
+  font-family: var(--font-mono); font-size: 10px;
+  white-space: nowrap;
+}
+.env-pill.ok { color: #86efac; border-color: rgba(34, 197, 94, 0.25); }
+.env-pill.danger { color: #fca5a5; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.07); }
+.env-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
