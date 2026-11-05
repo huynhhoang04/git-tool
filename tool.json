@@ -1,0 +1,17 @@
+{
+  "id": "git-tool",
+  "name": "Git workspace",
+  "version": "0.1.0",
+  "description": "Branches, pull requests and issues for the repositories on this machine.",
+  "start": ["{python}", "-m", "git_tool", "--port", "{port}"],
+  "setup": ["{python}", "-m", "pip", "install", "-r", "requirements.txt"],
+  "health": "/health",
+  "default_port": 9100,
+  "env": {
+    "GITHUB_TOKEN": "tool:github",
+    "KEY_ROUTER_URL": "keyrouter:url",
+    "KEY_ROUTER_TOOL_TOKEN": "generated:token",
+    "KEY_ROUTER_TOOL_DATA": "tool:data",
+    "TOOL_DIR": "tool:dir"
+  }
+}
